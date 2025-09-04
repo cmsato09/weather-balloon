@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import MappingGlobe from '../components/globe.jsx';
-import { fetchAPIData } from '../services/api.js';
+import PathGlobe from '../components/pathglobe.jsx';
+import { fetch24HrAPIData } from '../services/api.js';
 import '../App.css';
 
 function HomePage() {
-  const [balloonData, setBalloonData] = useState([]);
+  const [balloonData, setBalloonData] = useState({});
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchAPIData();
+        const data = await fetch24HrAPIData();
         setBalloonData(data);
       } catch (error) {
         console.error("Error fetching balloon data:", error);
@@ -25,7 +25,7 @@ function HomePage() {
         <h1>24-Hour Path Visualization</h1>
       </header>
       <main>
-        <MappingGlobe balloonData={balloonData} />
+        <PathGlobe balloonsData={balloonData} />
       </main>
     </div>
   );
