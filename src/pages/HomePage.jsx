@@ -4,7 +4,7 @@ import { fetch24HrAPIData } from '../services/api.js';
 import '../App.css';
 
 function HomePage() {
-  const [balloonData, setBalloonData] = useState({});
+  const [balloonData, setBalloonData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {

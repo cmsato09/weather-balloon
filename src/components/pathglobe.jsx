@@ -11,7 +11,7 @@ const PathGlobe = ({ balloonsData }) => {
 
   return (
     <Globe
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+      globeImageUrl="https://unpkg.com/three-globe/example/img/earth-day.jpg"
       pathsData={balloonsData}
       pathPoints="coords"
       pathPointLat={p => p[0]}

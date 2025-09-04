@@ -16,7 +16,28 @@ export const fetch24HrAPIData = async () => {
       return { index: i, data };
     });
 
-    const results = await Promise.all(promises);
+    const settlements = await Promise.allSettled(promises);
+    
+    const failedRequests = settlements
+      .filter(result => result.status === "rejected")
+      .map((result, index) => ({
+        index,
+        reason: result.reason
+      }));
+    
+    if (failedRequests.length > 0) {
+      console.error('Failed requests:', failedRequests);
+    }
+
+    const results = settlements
+      .filter(result => result.status === "fulfilled")
+      .map(result => result.value);
+
+    if (results.length === 0) {
+      console.error('No successful responses received');
+      return [];
+    }
+
     results.sort((a, b) => a.index - b.index);
 
     const firstDataPoint = results[0].data;
