@@ -1,10 +1,10 @@
 import React from 'react';
 
-function MapPage() {
+function PathPage() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Map Page</h1>
+        <h1>Path Page</h1>
       </header>
       <main>
         <p>This is the map page.</p>
@@ -13,4 +13,4 @@ function MapPage() {
   );
 }
 
-export default MapPage;
+export default PathPage;
