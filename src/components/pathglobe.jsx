@@ -6,7 +6,7 @@ const PathGlobe = ({ balloonsData }) => {
     return <div>Loading globe...</div>;
   }
 
-  const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+  const colors = ['#ff0000', '#00ff00', '#ff9d00ff', '#ffff00', '#ff00ff', '#00ffff'];
 
   const labelData = balloonsData.map(path => {
     const currentPos = path.coords[0];
@@ -22,6 +22,7 @@ const PathGlobe = ({ balloonsData }) => {
   return (
     <Globe
       globeImageUrl="https://unpkg.com/three-globe/example/img/earth-day.jpg"
+      height={800}
       pathsData={balloonsData}
       pathPoints="coords"
       pathPointLat={p => p[0]}
@@ -39,6 +40,7 @@ const PathGlobe = ({ balloonsData }) => {
       labelDotRadius={0.2}
       labelColor={d => d.color}
       labelResolution={2}
+      waitForGlobeReady
     />
   );
 };
